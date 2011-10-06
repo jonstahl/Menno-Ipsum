@@ -1,3 +1,5 @@
+"""Mennonite lorem ipsum generator"""
+
 import os.path
 import random
 from webob import Response
