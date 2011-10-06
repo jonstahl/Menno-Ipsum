@@ -35,16 +35,7 @@ $(document).ready(function(){
 		}
 
 	function loadMennoIpsum(paras,sentence_max,sentence_min){
-		var url='http://localhost:8080/?p='+paras+'&smax='+sentence_max+'&smin='+sentence_min;
-		$.ajax({
-		   type: "GET",
-		   url: url,
-		   dataType: "html",
-		   success: function(result){
-	     $("#results").html(result);
-		  }
-		 });
-	
+$('#results').load('http://localhost:8080/generator?p='+paras+'&smax='+sentence_max+'&smin='+sentence_min);	
 	}
 });
 </script>
