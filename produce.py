@@ -41,5 +41,6 @@ def build_sentence():
     sentence = sentence[0].upper() + sentence[1:]
     return sentence
 
-for i in range(10):
-    print build_sentence()
+if __name__ == '__main__':
+    for i in range(10):
+        print build_sentence()
