@@ -13,6 +13,7 @@ def produce(grammar, symbol):
     return words
 
 grammar = parse_cfg('''
+S_full -> S | SubConj S ',' S
 S -> NP VP
 PP -> P NP_no_PP | 'to get more billable hours' | 'in our wheelhouse' | 'in the bullpen' | 'in the cloud' | 'in the wiki' | 'in the wild'
 NP -> Det N | Det AP N | Det N PP | N_plural | AP N_plural | AP N_plural PP | N_proper
@@ -28,6 +29,7 @@ N_plural -> 'analytics' | 'best practices' | 'strategies' | 'engagement superpow
 N_proper -> 'I' | 'Gideon Rosenblatt' | 'Little House on the Prairie' | 'Groundwire' | 'Neal Myrick' | 'Plone' | 'Salesforce' | 'Skype' | 'Rally' | 'an agile process' | 'a bunch of technobabbling punks' | 'grooming the backlog' | 'the environmental movement' | 'the full meal deal' | 'what good looks like'
 N -> 'theory of change' | 'sprint' | 'wordle' | 'bucket' | 'campaign' | 'low-hanging fruit' | 'sprint planning' | 'technology' | 'user story' | 'engagement' | 'movement as network' | 'social change' | 'data migration' | 'innovation' | 'capacity building' | 'theming'
 P -> 'in' | 'outside' | 'to' | 'on' | 'about'
+SubConj -> 'although' | 'because' | 'while' | 'after' | 'as' | 'before' | 'if' | 'as long as' | 'since' | 'though' | 'unless' | 'whenever'
 ''')
 
 parser = ChartParser(grammar)
@@ -35,7 +37,7 @@ gr = parser.grammar()
 
 def build_sentence():
     words = produce(gr, gr.start())
-    sentence = ' '.join(words) + '.'
+    sentence = ' '.join(words).replace(' ,', ',') + '.'
     sentence = sentence[0].upper() + sentence[1:]
     return sentence
 
