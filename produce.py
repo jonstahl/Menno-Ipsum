@@ -48,8 +48,8 @@ A_RE = re.compile(r'\ba ([aeiou])', re.IGNORECASE)
 def build_sentence():
     words = produce(gr, gr.start())
     sentence = ' '.join(words).replace(' ,', ',') + '.'
-    sentence = sentence[0].upper() + sentence[1:]
     sentence = A_RE.sub(r'an \1', sentence)
+    sentence = sentence[0].upper() + sentence[1:]
     return sentence
 
 if __name__ == '__main__':
