@@ -24,10 +24,10 @@ Vtrans -> 'leverages' | 'creates' | 'pings' | 'postmortems' | 'refactors' | 'dog
 AP -> AP | A
 Det -> 'a' | 'the' | 'every'
 Det_plural -> 'some' | 'all' | 'most'
-A -> 'suboptimal' | 'nontrivial' | 'scrummy' | 'granular' | 'batshit crazy' | 'nonprofit' | 'open source' | 'performant' | 'hybrid' 
-N_plural -> 'analytics' | 'best practices' | 'strategies' | 'engagement superpowers' | 'API limits' | 'funders' | 'audiences' | 'supporters' | 'members'
+A -> 'suboptimal' | 'tactical' | 'global' | 'nontrivial' | 'scrummy' | 'granular' | 'batshit crazy' | 'nonprofit' | 'open source' | 'performant' | 'hybrid' 
+N_plural -> 'trees' | 'analytics' | 'metrics' | 'best practices' | 'strategies' | 'engagement superpowers' | 'API limits' | 'funders' | 'audiences' | 'supporters' | 'members'
 N_proper -> 'I' | 'Gideon Rosenblatt' | 'Wilco' | 'Little House on the Prairie' | 'Groundwire' | 'Neal Myrick' | 'Plone' | 'Salesforce' | 'Skype' | 'Rally' | 'an agile process' | 'a bunch of technobabbling punks' | 'grooming the backlog' | 'the environmental movement' | 'the full meal deal' | 'what good looks like' | 'HQ' | 'Jon Stahl' | 'Groundwire Labs'
-N -> 'bandwidth' | 'theory of change' | 'sprint' | 'wordle' | 'bucket' | 'campaign' | 'low-hanging fruit' | 'sprint planning' | 'technology' | 'user story' | 'engagement' | 'movement as network' | 'social change' | 'data migration' | 'innovation' | 'capacity building' | 'theming' | 'advanced functionality' | 'Engagement Pyramid' | 'Gantt chart' | 'scope' | 'scrumbucket' | 'consulting' | 'engagement level' | 'utilization rate' | 'Chipotle order' | 'penguin' | 'line of sight' | 'situational awareness'
+N -> 'synergy' | 'bandwidth' | 'theory of change' | 'sprint' | 'wordle' | 'bucket' | 'campaign' | 'low-hanging fruit' | 'sprint planning' | 'technology' | 'user story' | 'engagement' | 'movement as network' | 'social change' | 'data migration' | 'innovation' | 'capacity building' | 'theming' | 'advanced functionality' | 'Engagement Pyramid' | 'Gantt chart' | 'scope' | 'scrumbucket' | 'consulting' | 'engagement level' | 'utilization rate' | 'Chipotle order' | 'penguin' | 'line of sight' | 'situational awareness'
 P -> 'in' | 'outside' | 'to' | 'on' | 'about' | 'around'
 SubConj -> 'although' | 'because' | 'while' | 'after' | 'as' | 'before' | 'if' | 'as long as' | 'since' | 'though' | 'unless' | 'whenever'
 ''')
