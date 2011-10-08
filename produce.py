@@ -1,5 +1,6 @@
 from nltk import parse_cfg, ChartParser
 from random import choice
+import re
 
 def produce(grammar, symbol):
     words = []
@@ -42,10 +43,13 @@ SubConj -> 'although' | 'because' | 'while' | 'after' | 'as' | 'before' | 'if' |
 parser = ChartParser(grammar)
 gr = parser.grammar()
 
+A_RE = re.compile(r'\ba ([aeiou])', re.IGNORECASE)
+
 def build_sentence():
     words = produce(gr, gr.start())
     sentence = ' '.join(words).replace(' ,', ',') + '.'
     sentence = sentence[0].upper() + sentence[1:]
+    sentence = A_RE.sub(r'an \1', sentence)
     return sentence
 
 if __name__ == '__main__':
