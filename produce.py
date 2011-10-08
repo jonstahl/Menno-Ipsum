@@ -15,11 +15,13 @@ def produce(grammar, symbol):
 grammar = parse_cfg('''
 S_full -> S | SubConj S ',' S
 S -> NP VP | NP_plural VP_plural
-PP -> P NP | 'to get more billable hours' | 'in our wheelhouse' | 'in the bullpen' | 'in the cloud' | 'in the wiki' | 'in the wild' | 'in the streets' | 'with conviction'
+PP -> P NP | P_phrase
+PP_adverbial -> P_adverbial NP | P_phrase | 'to get more billable hours' | 'with conviction'
+P_phrase -> 'in our wheelhouse' | 'in the bullpen' | 'in the cloud' | 'in the wiki' | 'in the wild' | 'in the streets'
 NP        -> Det N | Det AP N | Det N PP | N_proper | N_collective | Det_plural N_collective | AP N_collective | Det_plural AP N_collective | N_collective PP | Det_plural N_collective PP
-NP_plural -> Det_plural N_plural | Det_plural AP N_plural | Det_plural N_plural PP | N_plural | AP N_plural | AP N_plural PP
-VP        -> Vtrans NP | Vintrans | VP PP
-VP_plural -> Vtrans_plural NP | Vintrans_plural | VP_plural PP
+NP_plural -> Det_plural N_plural | Det_plural AP N_plural | N_plural | AP N_plural | NP_plural PP
+VP        -> Vtrans NP | Vintrans | VP PP_adverbial
+VP_plural -> Vtrans_plural NP | Vintrans_plural | VP_plural PP_adverbial
 Vintrans        -> 'iterates' | 'adds value' | 'innovates' | 'sucks less' | 'is connected' 
 Vintrans_plural -> 'iterate'  | 'add value'  | 'innovate'  | 'suck less'  | 'are connected'
 Vtrans        -> 'leverages' | 'creates' | 'pings' | 'postmortems' | 'refactors' | 'dogfoods' | 'asymptotically approaches' | 'engages' | 'networks with' | 'organizes'
@@ -32,7 +34,8 @@ N_plural -> 'trees' | 'metrics' | 'best practices' | 'strategies' | 'engagement 
 N_proper -> 'Gideon Rosenblatt' | 'Wilco' | 'Little House on the Prairie' | 'Groundwire' | 'Neal Myrick' | 'Plone' | 'Salesforce' | 'Skype' | 'Rally' | 'an agile process' | 'a bunch of technobabbling punks' | 'grooming the backlog' | 'the environmental movement' | 'the full meal deal' | 'what good looks like' | 'HQ' | 'Jon Stahl' | 'Groundwire Labs' | 'GWBase'
 N -> 'theory of change' | 'sprint' | 'wordle' | 'bucket' | 'campaign' | 'user story' | 'Engagement Pyramid' | 'Gantt chart' | 'scope' | 'scrumbucket' | 'engagement level' | 'utilization rate' | 'Chipotle order' | 'penguin' | 'line of sight'
 N_collective -> 'analytics' | 'synergy' | 'bandwidth' | 'low-hanging fruit' | 'sprint planning' | 'technology' | 'engagement' | 'movement as network' | 'social change' | 'data migration' | 'innovation' | 'capacity building' | 'theming' | 'advanced functionality' | 'consulting' | 'situational awareness' | 'change management'
-P -> 'in' | 'outside' | 'to' | 'on' | 'about' | 'around' | 'of' | 'less than' | 'more than'
+P -> 'in' | 'outside' | 'on' | 'about' | 'around' | 'of'
+P_adverbial -> 'in' | 'outside' | 'to' | 'on' | 'about' | 'around' | 'less than' | 'more than'
 SubConj -> 'although' | 'because' | 'while' | 'after' | 'as' | 'before' | 'if' | 'as long as' | 'since' | 'though' | 'unless' | 'whenever'
 ''')
 
