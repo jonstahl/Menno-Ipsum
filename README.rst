@@ -1,6 +1,7 @@
-A Mennonite lorem ipsum generator.
+A Groundwire jargon lorem ipsum generator.
 
-This is a translation into Python of James Weber's original creation.
+This started as a translation into Python of James Weber's original Mennonite ipsum generator.
+Then I swapped out the vocabulary and started using NLTK to generate grammatical productions.
 
 Installation:
 
