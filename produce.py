@@ -21,8 +21,8 @@ PP_adverbial -> P_adverbial NP | P_phrase | 'to get more billable hours' | 'with
 P_phrase -> 'in our wheelhouse' | 'in the bullpen' | 'in the cloud' | 'in the wiki' | 'in the wild' | 'in the streets'
 NP        -> Det N | Det AP N | Det N PP | N_proper | N_collective | Det_plural N_collective | AP N_collective | Det_plural AP N_collective | N_collective PP | Det_plural N_collective PP
 NP_plural -> Det_plural N_plural | Det_plural AP N_plural | N_plural | AP N_plural | NP_plural PP
-VP        -> Vtrans NP | Vintrans | VP PP_adverbial
-VP_plural -> Vtrans_plural NP | Vintrans_plural | VP_plural PP_adverbial
+VP        -> Vtrans NP | Vintrans | 'is' A | VP PP_adverbial
+VP_plural -> Vtrans_plural NP | Vintrans_plural | 'are' A | VP_plural PP_adverbial
 Vintrans        -> 'iterates' | 'adds value' | 'innovates' | 'sucks less' | 'is connected' 
 Vintrans_plural -> 'iterate'  | 'add value'  | 'innovate'  | 'suck less'  | 'are connected'
 Vtrans        -> 'leverages' | 'creates' | 'pings' | 'postmortems' | 'refactors' | 'dogfoods' | 'asymptotically approaches' | 'engages' | 'networks with' | 'organizes'
@@ -36,7 +36,7 @@ N_proper -> 'Gideon Rosenblatt' | 'Wilco' | 'Little House on the Prairie' | 'Gro
 N -> 'theory of change' | 'sprint' | 'wordle' | 'bucket' | 'campaign' | 'user story' | 'Engagement Pyramid' | 'Gantt chart' | 'scope' | 'scrumbucket' | 'engagement level' | 'utilization rate' | 'Chipotle order' | 'penguin' | 'line of sight'
 N_collective -> 'analytics' | 'synergy' | 'bandwidth' | 'low-hanging fruit' | 'sprint planning' | 'technology' | 'engagement' | 'movement as network' | 'social change' | 'data migration' | 'innovation' | 'capacity building' | 'theming' | 'advanced functionality' | 'consulting' | 'situational awareness' | 'change management'
 P -> 'in' | 'outside' | 'on' | 'about' | 'around' | 'of'
-P_adverbial -> 'in' | 'outside' | 'to' | 'on' | 'about' | 'around' | 'less than' | 'more than'
+P_adverbial -> 'in' | 'outside' | 'on' | 'about' | 'around' | 'less than' | 'more than'
 SubConj -> 'although' | 'because' | 'while' | 'after' | 'as' | 'before' | 'if' | 'as long as' | 'since' | 'though' | 'unless' | 'whenever'
 ''')
 
@@ -53,5 +53,4 @@ def build_sentence():
     return sentence
 
 if __name__ == '__main__':
-    for i in range(10):
-        print build_sentence()
+    print build_sentence()
