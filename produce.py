@@ -1,4 +1,4 @@
-from nltk import parse_cfg, ChartParser
+from nltk import CFG, ChartParser
 from random import choice
 import re
 
@@ -7,13 +7,13 @@ def produce(grammar, symbol):
     productions = grammar.productions(lhs = symbol)
     production = choice(productions)
     for sym in production.rhs():
-        if isinstance(sym, str):
+        if isinstance(sym, unicode):
             words.append(sym)
         else:
             words.extend(produce(grammar, sym))
     return words
 
-grammar = parse_cfg('''
+grammar = CFG.fromstring('''
 S_full -> S | SubConj S ',' S
 S -> NP VP | NP_plural VP_plural
 PP -> P NP | P_phrase
