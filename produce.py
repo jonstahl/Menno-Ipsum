@@ -2,18 +2,21 @@ from nltk import CFG, ChartParser
 from random import choice
 import re
 
+
 def produce(grammar, symbol):
     words = []
-    productions = grammar.productions(lhs = symbol)
+    productions = grammar.productions(lhs=symbol)
     production = choice(productions)
     for sym in production.rhs():
-        if isinstance(sym, unicode):
+        if isinstance(sym, str):
             words.append(sym)
         else:
             words.extend(produce(grammar, sym))
     return words
 
-grammar = CFG.fromstring('''
+
+grammar = CFG.fromstring(
+    """
 S_full -> S | SubConj S ',' S
 S -> NP VP | NP_plural VP_plural
 PP -> P NP | P_phrase
@@ -38,19 +41,22 @@ N_collective -> 'analytics' | 'synergy' | 'bandwidth' | 'low-hanging fruit' | 's
 P -> 'in' | 'outside' | 'on' | 'about' | 'around' | 'of'
 P_adverbial -> 'in' | 'outside' | 'on' | 'about' | 'around' | 'less than' | 'more than'
 SubConj -> 'although' | 'because' | 'while' | 'after' | 'as' | 'before' | 'if' | 'as long as' | 'since' | 'though' | 'unless' | 'whenever'
-''')
+"""
+)
 
 parser = ChartParser(grammar)
 gr = parser.grammar()
 
-A_RE = re.compile(r'\ba ([aeiou])', re.IGNORECASE)
+A_RE = re.compile(r"\ba ([aeiou])", re.IGNORECASE)
+
 
 def build_sentence():
     words = produce(gr, gr.start())
-    sentence = ' '.join(words).replace(' ,', ',') + '.'
-    sentence = A_RE.sub(r'an \1', sentence)
+    sentence = " ".join(words).replace(" ,", ",") + "."
+    sentence = A_RE.sub(r"an \1", sentence)
     sentence = sentence[0].upper() + sentence[1:]
     return sentence
 
-if __name__ == '__main__':
-    print build_sentence()
+
+if __name__ == "__main__":
+    print(build_sentence())
