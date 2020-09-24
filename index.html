@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GW Ipsum</title>
+    <title>SF Ipsum</title>
     <meta charset="utf-8" />
     <script
       src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
@@ -18,21 +18,21 @@
     />
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script type="text/javascript">
-      $(document).ready(function() {
-        loadMennoIpsum(4, 9, 5);
+      $(document).ready(function () {
+        loadIpsum(5, 3, 1);
         $("#paragraphs").slider({
-          value: 4,
+          value: 5,
           min: 1,
           max: 10,
           step: 1,
-          slide: function(event, ui) {
+          slide: function (event, ui) {
             $("#paragraphs-amount").html("Paragraphs: " + ui.value);
-            loadMennoIpsum(
+            loadIpsum(
               ui.value,
               $("#sentences").slider("values", 1),
               $("#sentences").slider("values", 0)
             );
-          }
+          },
         });
         $("#paragraphs-amount").html(
           "Paragraphs: " + $("#paragraphs").slider("value")
@@ -40,16 +40,16 @@
 
         $("#sentences").slider({
           range: true,
-          values: [5, 9],
+          values: [1, 3],
           min: 1,
           max: 10,
           step: 1,
-          slide: function(event, ui) {
+          slide: function (event, ui) {
             $("#sentences-amount").html(
               "Sentences: " + ui.values[0] + "-" + ui.values[1]
             );
-            autoMennoIpsum();
-          }
+            autoIpsum();
+          },
         });
         $("#sentences-amount").html(
           $("#sentences").slider("values", 0) +
@@ -60,21 +60,21 @@
 
         $("button")
           .button()
-          .click(function() {
+          .click(function () {
             paras = $("#paragraphs").slider("value");
             sentence_max = $("#sentences").slider("values", 1);
             sentence_min = $("#sentences").slider("values", 0);
-            loadMennoIpsum(paras, sentence_max, sentence_min);
+            loadIpsum(paras, sentence_max, sentence_min);
           });
 
-        function autoMennoIpsum() {
+        function autoIpsum() {
           paras = $("#paragraphs").slider("value");
           sentence_max = $("#sentences").slider("values", 1);
           sentence_min = $("#sentences").slider("values", 0);
-          loadMennoIpsum(paras, sentence_max, sentence_min);
+          loadIpsum(paras, sentence_max, sentence_min);
         }
 
-        function loadMennoIpsum(paras, sentence_max, sentence_min) {
+        function loadIpsum(paras, sentence_max, sentence_min) {
           $("#results").load(
             "/generator?p=" +
               paras +
@@ -88,7 +88,7 @@
     </script>
   </head>
   <body>
-    <h1>GW Ipsum</h1>
+    <h1>SF Ipsum</h1>
     <div id="controls">
       <div id="paragraphs-amount">Paragraphs:</div>
       <div id="paragraphs"></div>

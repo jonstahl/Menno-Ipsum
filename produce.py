@@ -6,7 +6,10 @@ import re
 def produce(grammar, symbol):
     words = []
     productions = grammar.productions(lhs=symbol)
-    production = choice(productions)
+    try:
+        production = choice(productions)
+    except Exception as e:
+        raise Exception(f"Error with production {symbol}")
     for sym in production.rhs():
         if isinstance(sym, str):
             words.append(sym)
@@ -19,25 +22,25 @@ grammar = CFG.fromstring(
     """
 S_full -> S | SubConj S ',' S
 S -> NP VP | NP_plural VP_plural
-PP -> P NP | P_phrase
-PP_adverbial -> P_adverbial NP | P_phrase | 'to get more billable hours' | 'with conviction'
-P_phrase -> 'in our wheelhouse' | 'in the bullpen' | 'in the cloud' | 'in the wiki' | 'in the wild' | 'in the streets'
+PP -> P NP
+P_phrase -> 'of tomorrow'
+PP_adverbial -> P_adverbial NP | P_phrase
 NP        -> Det N | Det AP N | Det N PP | N_proper | N_collective | Det_plural N_collective | AP N_collective | Det_plural AP N_collective | N_collective PP | Det_plural N_collective PP
 NP_plural -> Det_plural N_plural | Det_plural AP N_plural | N_plural | AP N_plural | NP_plural PP
 VP        -> Vtrans NP | Vintrans | 'is' A | VP PP_adverbial
 VP_plural -> Vtrans_plural NP | Vintrans_plural | 'are' A | VP_plural PP_adverbial
-Vintrans        -> 'iterates' | 'adds value' | 'innovates' | 'sucks less' | 'is connected' 
-Vintrans_plural -> 'iterate'  | 'add value'  | 'innovate'  | 'suck less'  | 'are connected'
-Vtrans        -> 'leverages' | 'creates' | 'pings' | 'postmortems' | 'refactors' | 'dogfoods' | 'asymptotically approaches' | 'engages' | 'networks with' | 'organizes'
-Vtrans_plural -> 'leverage'  | 'create'  | 'ping'  | 'postmortem'  | 'refactor'  | 'dogfood'  | 'asymptotically approach'   | 'engage'  | 'network with'  | 'organize'
+Vintrans        -> 'drives customer success' | 'innovates' | 'drinks the champagne'
+Vintrans_plural -> 'drive customer success'  | 'innovate'  | 'drink the champagne'
+Vtrans        -> 'unlocks' | 'extends' | 'creates' | 'loops in' | 'pings' | 'architects' | 'accelerates'
+Vtrans_plural -> 'unlock'  | 'extend'  | 'create'  | 'loop in ' | 'ping'  | 'architect'  | 'accelerate'
 AP -> AP | A
 Det -> 'a' | 'the' | 'every'
 Det_plural -> 'the' | 'some' | 'all' | 'most'
-A -> 'suboptimal' | 'tactical' | 'global' | 'nontrivial' | 'scrummy' | 'granular' | 'batshit crazy' | 'nonprofit' | 'open source' | 'performant' | 'hybrid' 
-N_plural -> 'trees' | 'metrics' | 'best practices' | 'strategies' | 'engagement superpowers' | 'API limits' | 'funders' | 'audiences' | 'supporters' | 'members' | 'concentric circles'
-N_proper -> 'Gideon Rosenblatt' | 'Wilco' | 'Little House on the Prairie' | 'Groundwire' | 'Neal Myrick' | 'Plone' | 'Salesforce' | 'Skype' | 'Rally' | 'an agile process' | 'a bunch of technobabbling punks' | 'grooming the backlog' | 'the environmental movement' | 'the full meal deal' | 'what good looks like' | 'HQ' | 'Jon Stahl' | 'Groundwire Labs' | 'GWBase'
-N -> 'theory of change' | 'sprint' | 'wordle' | 'bucket' | 'campaign' | 'user story' | 'Engagement Pyramid' | 'Gantt chart' | 'scope' | 'scrumbucket' | 'engagement level' | 'utilization rate' | 'Chipotle order' | 'penguin' | 'line of sight'
-N_collective -> 'analytics' | 'synergy' | 'bandwidth' | 'low-hanging fruit' | 'sprint planning' | 'technology' | 'engagement' | 'movement as network' | 'social change' | 'data migration' | 'innovation' | 'capacity building' | 'theming' | 'advanced functionality' | 'consulting' | 'situational awareness' | 'change management'
+A -> 'global' | 'best-practice' | 'open source' | 'agile' | 'Lightning' | 'Einstein' | 'cloud-based' | 'Summer' | 'Winter' | 'Spring'
+N_plural -> 'trees' | 'metrics' | 'best practices' | 'governor limits'
+N_proper -> 'Marc Benioff' | 'Salesforce.org' | 'Quip' | 'Tableau' | 'Work.com' | 'Salesforce' | 'Zoom' | 'the 4th industrial revolution' | 'Customer 360' | 'the platform' | 'Ohana' | 'Astro' | 'Codey' | 'Appy' | 'SaaSy' | 'Cloudy' | 'Einstein' | 'the 1-1-1 model' | 'Dreamforce' | 'Apex' | 'the AppExchange' | 'Chatter' | 'the Metadata API' | 'the Tooling API' | 'Trailhead' | 'the Hub' | 'the Open Source Commons' | '"clicks not code"'
+N -> 'community sprint' | 'account' | 'contact' | 'campaign' | 'opportunity' | 'user story' | 'bug' | 'release' | 'org' | 'instance' | 'partner' | 'ISV' | 'customer' | 'Trailblazer'
+N_collective -> 'analytics' | 'sprint planning' | 'backlog grooming' | 'technology' | 'digital experience' | 'social change' | 'data migration' | 'innovation' | 'business' | 'trust' | 'customer success' | 'equality'
 P -> 'in' | 'outside' | 'on' | 'about' | 'around' | 'of'
 P_adverbial -> 'in' | 'outside' | 'on' | 'about' | 'around' | 'less than' | 'more than'
 SubConj -> 'although' | 'because' | 'while' | 'after' | 'as' | 'before' | 'if' | 'as long as' | 'since' | 'though' | 'unless' | 'whenever'

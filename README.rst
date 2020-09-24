@@ -1,4 +1,4 @@
-A Groundwire jargon lorem ipsum generator.
+A jargon lorem ipsum generator.
 
 This started as a translation into Python of James Weber's original Mennonite ipsum generator.
 Then I swapped out the vocabulary and started using NLTK to generate grammatical productions.

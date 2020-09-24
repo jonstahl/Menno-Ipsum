@@ -1,4 +1,4 @@
-"""Groundwire lorem ipsum generator"""
+"""lorem ipsum generator"""
 
 import os.path
 import random
